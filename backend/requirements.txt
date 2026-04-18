@@ -4,6 +4,7 @@ numpy
 pandas
 fastapi
 uvicorn[standard]
+python-multipart
 
 # FACE RECOGNITION
 scikit-learn
