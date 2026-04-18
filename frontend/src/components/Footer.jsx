@@ -10,13 +10,13 @@ export default function Footer() {
               <span className="text-white text-[10px] font-bold font-mono">SC</span>
             </div>
             <span className="font-display font-semibold text-slate-700">
-              Snap<span className="text-violet-600">Class</span>
+              Snap<span className="text-violet-600">Mark</span>
             </span>
           </div>
 
           {/* Copyright */}
           <p className="text-sm text-slate-400 font-medium">
-            &copy; {new Date().getFullYear()} SnapClass AI Attendance. Built with ❤️
+            &copy; {new Date().getFullYear()} SnapMark AI Attendance. Built with ❤️
           </p>
 
           {/* Links */}

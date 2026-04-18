@@ -111,3 +111,16 @@ def get_student_attendance(student_id: int):
 def get_attendance_for_teacher(teacher_id: int):
     return supabase.table("attendance_logs") \
         .select("*, subjects!inner(*)").eq("subjects.teacher_id", teacher_id).execute().data
+
+
+def get_attendance_for_subject(subject_id: int):
+    """All attendance logs for a subject (teacher detail view)."""
+    return supabase.table("attendance_logs") \
+        .select("*, students(id, name)").eq("subject_id", subject_id).execute().data
+
+
+def get_student_attendance_for_subject(student_id: int, subject_id: int):
+    """A student's attendance logs for a specific subject."""
+    return supabase.table("attendance_logs") \
+        .select("*").eq("student_id", student_id).eq("subject_id", subject_id).execute().data
+

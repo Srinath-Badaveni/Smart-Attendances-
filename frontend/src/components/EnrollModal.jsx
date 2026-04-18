@@ -4,8 +4,8 @@ import * as api from "../api/client";
 const inputCls =
   "w-full px-4 py-4 bg-slate-50 border border-slate-200 rounded-xl text-lg font-mono font-bold text-slate-800 placeholder-slate-300 tracking-[0.3em] uppercase text-center focus:outline-none focus:ring-2 focus:ring-violet-500/40 focus:border-violet-400 transition-all duration-200";
 
-export default function EnrollModal({ studentId, onClose }) {
-  const [code,    setCode]    = useState("");
+export default function EnrollModal({ studentId, onClose, initialCode = "" }) {
+  const [code,    setCode]    = useState(initialCode);
   const [error,   setError]   = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
@@ -38,10 +38,23 @@ export default function EnrollModal({ studentId, onClose }) {
           <div className="flex items-start justify-between mb-6">
             <div>
               <h3 className="font-display font-bold text-xl text-slate-900">Enroll in Subject</h3>
-              <p className="text-sm text-slate-500 mt-0.5">Enter the code from your teacher</p>
+              <p className="text-sm text-slate-500 mt-0.5">
+                {initialCode ? "You were invited via a join link" : "Enter the code from your teacher"}
+              </p>
             </div>
             <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 text-lg transition-colors">×</button>
           </div>
+
+          {/* Auto-fill banner when opened via URL */}
+          {initialCode && !error && !success && (
+            <div className="mb-5 flex items-center gap-3 p-4 bg-violet-50 border border-violet-200 rounded-xl">
+              <span className="text-xl">🔗</span>
+              <div>
+                <p className="text-sm font-bold text-violet-800">Join code detected!</p>
+                <p className="text-xs text-violet-600 mt-0.5">Code <span className="font-mono font-bold">{initialCode}</span> was loaded from the invite link.</p>
+              </div>
+            </div>
+          )}
 
           {error && (
             <div className="mb-5 flex items-start gap-2.5 p-4 bg-rose-50 border border-rose-200 rounded-xl text-sm text-rose-700 font-medium break-words">

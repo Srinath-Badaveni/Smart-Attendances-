@@ -25,7 +25,7 @@ export default function Navbar() {
               <span className="text-white text-xs font-bold font-mono">SC</span>
             </div>
             <span className="font-display font-700 text-lg text-slate-900 tracking-tight">
-              Snap<span className="text-violet-600">Class</span>
+              Snap<span className="text-violet-600">Mark</span>
             </span>
           </button>
 

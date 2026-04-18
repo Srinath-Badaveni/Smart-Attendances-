@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import auth, subjects, students, attendance
 
-app = FastAPI(title="SnapClass API", version="1.0.0")
+app = FastAPI(title="SnapMark API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,

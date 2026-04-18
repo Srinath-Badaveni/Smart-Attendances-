@@ -60,7 +60,7 @@ export default function HomeScreen() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/20 border border-violet-500/30 text-violet-300 text-xs font-semibold tracking-wide uppercase mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-            AI-Powered Classroom Management
+            SnapMark — AI Attendance
           </div>
 
           {/* Headline */}

@@ -5,7 +5,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from db import (
     create_subject, get_teacher_subjects, get_subject_by_code,
     enroll_student_to_subject, unenroll_student_to_subject,
-    get_student_subjects, check_already_enrolled, get_enrolled_students
+    get_student_subjects, check_already_enrolled, get_enrolled_students,
+    get_attendance_for_subject, get_student_attendance_for_subject
 )
 
 router = APIRouter()
@@ -75,3 +76,15 @@ def unenroll(body: UnenrollRequest):
 @router.get("/{subject_id}/students")
 def get_enrolled(subject_id: int):
     return {"students": get_enrolled_students(subject_id)}
+
+
+@router.get("/{subject_id}/attendance")
+def get_subject_attendance(subject_id: int):
+    """All attendance logs for a subject (teacher detail view)."""
+    return {"logs": get_attendance_for_subject(subject_id)}
+
+
+@router.get("/{subject_id}/student/{student_id}/attendance")
+def get_my_subject_attendance(subject_id: int, student_id: int):
+    """A student's attendance for a specific subject."""
+    return {"logs": get_student_attendance_for_subject(student_id, subject_id)}

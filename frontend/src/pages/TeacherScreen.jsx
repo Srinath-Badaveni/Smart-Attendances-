@@ -3,6 +3,7 @@ import * as api from "../api/client";
 import SubjectCard from "../components/SubjectCard";
 import CreateSubjectModal from "../components/CreateSubjectModal";
 import ShareSubjectModal from "../components/ShareSubjectModal";
+import SubjectDetailModal from "../components/SubjectDetailModal";
 import TakeAttendanceTab from "../components/TakeAttendanceTab";
 import AttendanceRecordsTab from "../components/AttendanceRecordsTab";
 import { useApp } from "../context/AppContext";
@@ -16,8 +17,9 @@ function TeacherDashboard() {
   const { teacher } = useApp();
   const [tab, setTab] = useState("attendance");
   const [showCreateSubject, setShowCreateSubject] = useState(false);
-  const [subjects, setSubjects] = useState(null);
-  const [shareTarget, setShareTarget] = useState(null);
+  const [subjects, setSubjects]     = useState(null);
+  const [shareTarget, setShareTarget]   = useState(null);
+  const [detailTarget, setDetailTarget] = useState(null);
 
   const loadSubjects = async () => {
     const data = await api.getTeacherSubjects(teacher.id || teacher.teacher_id);
@@ -82,7 +84,7 @@ function TeacherDashboard() {
       </div>
 
       {/* Content */}
-      <div className="flex-grow bg-slate-50">
+      <div className="flex-grow bg-violet-50/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
           {tab === "attendance" && (
@@ -110,6 +112,7 @@ function TeacherDashboard() {
                     name={sub.name}
                     code={sub.subject_code}
                     section={sub.section}
+                    onClick={() => setDetailTarget(sub)}
                     stats={[
                       ["👥", "Students", sub.total_students],
                       ["🕐", "Classes", sub.total_classes],
@@ -143,6 +146,14 @@ function TeacherDashboard() {
       {shareTarget && (
         <ShareSubjectModal subject={shareTarget} onClose={() => setShareTarget(null)} />
       )}
+      {detailTarget && (
+        <SubjectDetailModal
+          subject={detailTarget}
+          role="teacher"
+          onClose={() => setDetailTarget(null)}
+          onShare={(sub) => setShareTarget(sub)}
+        />
+      )}
     </div>
   );
 }
@@ -150,7 +161,7 @@ function TeacherDashboard() {
 // ── Auth form wrapper
 function AuthCard({ children, title, subtitle }) {
   return (
-    <div className="w-full flex-grow flex items-center justify-center p-6 bg-slate-50">
+    <div className="w-full flex-grow flex items-center justify-center p-6 bg-violet-50">
       <div className="w-full max-w-md bg-white border border-slate-200 rounded-4xl p-8 shadow-modal animate-slide-up">
         <div className="mb-8">
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-600 to-violet-400 flex items-center justify-center mb-5 shadow-glow-violet">
@@ -257,7 +268,7 @@ function TeacherRegister({ onLogin }) {
   ];
 
   return (
-    <AuthCard title="Create Account" subtitle="Join SnapClass as a teacher.">
+    <AuthCard title="Create Account" subtitle="Join SnapMark as a teacher.">
       {error && (
         <div className="mb-5 flex items-start gap-3 p-4 bg-rose-50 border border-rose-200 rounded-xl text-sm text-rose-700 font-medium">
           <span className="shrink-0">⚠️</span>

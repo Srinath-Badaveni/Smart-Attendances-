@@ -3,16 +3,21 @@ import { useApp } from "../context/AppContext";
 import * as api from "../api/client";
 import SubjectCard from "../components/SubjectCard";
 import EnrollModal from "../components/EnrollModal";
+import SubjectDetailModal from "../components/SubjectDetailModal";
 
 const inputCls =
   "w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/40 focus:border-violet-400 transition-all duration-200";
 
 // ── Student Dashboard ─────────────────────────────────────────────────────────
 function StudentDashboard() {
-  const { student } = useApp();
-  const [subjects, setSubjects] = useState(null);
+  const { student, joinCode, setJoinCode } = useApp();
+  const [subjects, setSubjects]           = useState(null);
   const [attendanceLogs, setAttendanceLogs] = useState(null);
-  const [showEnroll, setShowEnroll] = useState(false);
+  // Auto-open enroll if arrived via join-code URL
+  const [showEnroll, setShowEnroll]       = useState(!!joinCode);
+  const [detailSubject, setDetailSubject] = useState(null);
+  // Pre-fill the enroll modal if a join-code is pending
+  const pendingCode = joinCode;
 
   const load = async () => {
     const [subs, logs] = await Promise.all([
@@ -80,7 +85,7 @@ function StudentDashboard() {
       </div>
 
       {/* Subjects grid */}
-      <div className="flex-grow bg-slate-50">
+      <div className="flex-grow bg-violet-50/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <h3 className="font-display font-semibold text-lg text-slate-800 mb-6">Enrolled Subjects</h3>
 
@@ -107,6 +112,7 @@ function StudentDashboard() {
                     name={sub.name}
                     code={sub.subject_code}
                     section={sub.section}
+                    onClick={() => setDetailSubject(sub)}
                     stats={[
                       ["📅", "Total",    s.total],
                       ["✅", "Attended", s.attended],
@@ -131,7 +137,20 @@ function StudentDashboard() {
       {showEnroll && (
         <EnrollModal
           studentId={student?.id || student?.student_id || 1}
-          onClose={() => { setShowEnroll(false); setSubjects(null); }}
+          initialCode={pendingCode || ""}
+          onClose={() => {
+            setShowEnroll(false);
+            setJoinCode(null); // clear the pending join code
+            setSubjects(null);
+          }}
+        />
+      )}
+      {detailSubject && (
+        <SubjectDetailModal
+          subject={detailSubject}
+          role="student"
+          studentId={student?.id || student?.student_id || 1}
+          onClose={() => setDetailSubject(null)}
         />
       )}
     </div>
@@ -221,7 +240,7 @@ function FaceLogin() {
   };
 
   return (
-    <div className="w-full flex-grow flex items-center justify-center bg-slate-50 p-6">
+    <div className="w-full flex-grow flex items-center justify-center bg-violet-50 p-6">
       <div className="w-full max-w-md">
 
         {/* Card */}

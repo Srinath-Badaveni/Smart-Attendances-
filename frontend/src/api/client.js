@@ -108,3 +108,14 @@ export const saveAttendance = (logs) =>
 
 export const getTeacherAttendanceRecords = (teacherId) =>
   request(`/attendance/teacher/${teacherId}`);
+
+// ── Subject Detail ────────────────────────────────────────────────────────────
+export const getSubjectStudents = (subjectId) =>
+  request(`/subjects/${subjectId}/students`);
+
+export const getSubjectAttendanceLogs = (subjectId) =>
+  request(`/subjects/${subjectId}/attendance`);
+
+export const getStudentSubjectAttendance = (subjectId, studentId) =>
+  request(`/subjects/${subjectId}/student/${studentId}/attendance`);
+

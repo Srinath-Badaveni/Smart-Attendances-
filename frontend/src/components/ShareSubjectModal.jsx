@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const APP_DOMAIN = import.meta.env.VITE_APP_DOMAIN || "snapclass-main.streamlit.app";
+const APP_DOMAIN = (import.meta.env.VITE_APP_DOMAIN || "http://localhost:5173").replace(/\/$/, "");
 
 export default function ShareSubjectModal({ subject, onClose }) {
   const canvasRef = useRef(null);
