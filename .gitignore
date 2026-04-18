@@ -1,0 +1,80 @@
+# ======================
+# 🔐 ENV FILES
+# ======================
+.env
+.env.*
+!.env.example
+
+# ======================
+# 🐍 PYTHON (Backend)
+# ======================
+backend/venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+*.log
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+
+# ======================
+# 📦 NODE (Frontend)
+# ======================
+frontend/node_modules/
+node_modules/
+
+# Build outputs
+frontend/dist/
+dist/
+build/
+
+# Vite cache
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ======================
+# 🧠 ML / AI FILES (IMPORTANT)
+# ======================
+*.h5
+*.pt
+*.pth
+*.onnx
+*.pkl
+*.joblib
+*.wav
+*.mp3
+
+# ======================
+# 🖼️ IMAGES (optional)
+# ======================
+# Comment this if you want to track images
+# *.jpg
+# *.png
+
+# ======================
+# 💻 OS FILES
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# 🛠️ IDE / EDITOR
+# ======================
+.vscode/
+.idea/
+
+# ======================
+# 📦 MISC
+# ======================
+*.zip
+*.tar
+*.gz
