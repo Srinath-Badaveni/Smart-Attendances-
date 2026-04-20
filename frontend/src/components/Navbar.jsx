@@ -22,10 +22,10 @@ export default function Navbar() {
             className="flex items-center gap-3 group"
           >
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-600 to-violet-400 flex items-center justify-center shadow-glow-violet group-hover:scale-105 transition-transform duration-200">
-              <span className="text-white text-xs font-bold font-mono">SC</span>
+              <span className="text-white text-xs font-bold font-mono">NP</span>
             </div>
             <span className="font-display font-700 text-lg text-slate-900 tracking-tight">
-              Snap<span className="text-violet-600">Mark</span>
+              No<span className="text-violet-600">Proxy</span>
             </span>
           </button>
 
