@@ -7,16 +7,16 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex items-center gap-3">
             <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-violet-400 flex items-center justify-center">
-              <span className="text-white text-[10px] font-bold font-mono">SC</span>
+              <span className="text-white text-[10px] font-bold font-mono">NP</span>
             </div>
             <span className="font-display font-semibold text-slate-700">
-              Snap<span className="text-violet-600">Mark</span>
+              No<span className="text-violet-600">Proxy</span>
             </span>
           </div>
 
           {/* Copyright */}
           <p className="text-sm text-slate-400 font-medium">
-            &copy; {new Date().getFullYear()} SnapMark AI Attendance. Built with ❤️
+            &copy; {new Date().getFullYear()} NoProxy AI Attendance. Built with ❤️
           </p>
 
           {/* Links */}

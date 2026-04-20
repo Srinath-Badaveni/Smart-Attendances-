@@ -1,11 +1,11 @@
-# SnapClass: AI-Powered Biometric Attendance System
+# NoProxy: AI-Powered Biometric Attendance System
 
-SnapClass is a modern, decoupled web application designed to revolutionize attendance tracking in educational and corporate environments. By replacing manual registers with advanced **Face and Voice Biometrics**, SnapClass ensures 100% accuracy and eliminates "proxy" attendance.
+NoProxy is a modern, decoupled web application designed to revolutionize attendance tracking in educational and corporate environments. By replacing manual registers with advanced **Face and Voice Biometrics**, NoProxy ensures 100% accuracy and eliminates "proxy" attendance.
 
 ---
 
 ## 🚀 Vision
-To provide a seamless, secure, and automated attendance experience using state-of-the-art Computer Vision and Deep Learning.
+To provide a seamless, secure, and automated attendance experience using state-of-the-art Computer Vision and Deep Learning with NoProxy.
 
 ## ✨ Key Features
 - **Dual-Biometric Authentication**: Secure student registration and verification using Face ID and Voice ID.

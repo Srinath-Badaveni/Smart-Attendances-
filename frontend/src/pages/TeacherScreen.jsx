@@ -165,7 +165,7 @@ function AuthCard({ children, title, subtitle }) {
       <div className="w-full max-w-md bg-white border border-slate-200 rounded-4xl p-8 shadow-modal animate-slide-up">
         <div className="mb-8">
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-600 to-violet-400 flex items-center justify-center mb-5 shadow-glow-violet">
-            <span className="text-white font-bold font-mono text-sm">SC</span>
+            <span className="text-white font-bold font-mono text-sm">NP</span>
           </div>
           <h1 className="font-display font-bold text-2xl text-slate-900">{title}</h1>
           {subtitle && <p className="text-sm text-slate-500 mt-1">{subtitle}</p>}
@@ -268,7 +268,7 @@ function TeacherRegister({ onLogin }) {
   ];
 
   return (
-    <AuthCard title="Create Account" subtitle="Join SnapMark as a teacher.">
+    <AuthCard title="Create Account" subtitle="Join NoProxy as a teacher.">
       {error && (
         <div className="mb-5 flex items-start gap-3 p-4 bg-rose-50 border border-rose-200 rounded-xl text-sm text-rose-700 font-medium">
           <span className="shrink-0">⚠️</span>
